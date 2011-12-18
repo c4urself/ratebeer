@@ -49,7 +49,6 @@ define([
         },
 
         getNext: function() {
-            console.info("getNext");
             var next = this.current + 1;
             var currentBeer = this.collection.length == next ? this.collection.at(0) : this.collection.at(next);
             this.current = this.collection.indexOf(currentBeer);

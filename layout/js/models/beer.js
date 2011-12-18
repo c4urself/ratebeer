@@ -8,13 +8,6 @@ define([
 
         url: function() {
             return this.id;
-        },
-
-        defaults: function() {
-            return {
-                rated:  false//,
-                //order: Todos.nextOrder()
-            };
         }
 
     });

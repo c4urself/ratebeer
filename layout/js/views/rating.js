@@ -37,18 +37,14 @@ define([
         },
 
         doUpvote: function() {
-            console.info("Upvote clicked");
             if (!this.model.id) {
-                console.info("Upvoting");
                 this.model.save({
                     success: function() {
-                        console.log(this.model);
                         this.changeClass("upvote");
                     }
                 });
 
             } else {
-                console.info("Removing upvote");
                 var self = this;
                 this.model.destroy({
                     success: function() {

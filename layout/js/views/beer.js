@@ -19,10 +19,7 @@ define([
         },
 
         initialize: function() {
-            console.info("Initializing beer view");
-
             if (this.model.get("current_rating")) {
-                console.info("Beer has been rated by current user");
                 this.ratingModel = new RatingModel({id: this.model.get("current_rating")});
                 this.ratingModel.fetch({
                     success: function(model, res){
@@ -31,10 +28,8 @@ define([
                 
                 });
             } else {
-                console.info("Beer has not been rated by current user");
                 this.ratingModel = new RatingModel({user_id: this.model.get("user"), beer: this.model.get("id")});
             }
-            console.log(this.ratingModel);
             this.ratingModel.bind("change", this.reloadModel, this);
             this.model.bind("change:visible", this.toggle, this);
             this.model.bind("change", this.render, this);
@@ -42,8 +37,6 @@ define([
         },
 
         render: function() {
-            console.log("Rendering beer view");
-
             $(this.el).html(M.to_html(beerTemplate, this.model.toJSON()));
             
             var ratingView = new RatingView({model: this.ratingModel});
@@ -56,7 +49,6 @@ define([
 
         reloadModel: function() {
             var self = this;
-            console.info("Reloading beer model");
             this.model.save({
                 success: function() {
                     self.render();
@@ -83,7 +75,6 @@ define([
         },
         
         showDescription: function() {
-            console.log("mouseover");
             var $image = this.$(".image");
             $image.html(M.to_html(descriptionTemplate, this.model.toJSON()));
             $image.css("background-position", "-1000px -1000px");
@@ -91,22 +82,14 @@ define([
         },
 
         hideDescription: function() {
-            console.log("mouseover");
             var $image = this.$(".image");
             $image.children().fadeOut(100, function() {
                 $(this).remove();
                 $image.css("background-position", "50% 50%");
             });
-            //$image.html("");
             
-
         },
         
-
-        updateNumber: function() {
-            console.info("Updating vote count");
-            //this.$(".totalvotes").html(this.model.get("number"));
-        },
 
         toggle: function() {
             if (this.model.get("visible") === true) {
