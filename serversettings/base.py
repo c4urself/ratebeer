@@ -131,7 +131,6 @@ INSTALLED_APPS = (
     'tastypie',
     'south',
     'django_extensions',
-    'imageservice',
 
     'ratebeer.main',
 )
