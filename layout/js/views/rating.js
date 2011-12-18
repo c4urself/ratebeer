@@ -11,10 +11,6 @@ define([
         tagName: 'div',
         className: 'vote',
         
-        initialize: function() {
-            //this.model.bind("change", this.render, this);
-        },
-
         render: function() {
             $(this.el).append(M.to_html(ratingTemplate, this.model.toJSON()));
             if (this.model.get("id")) {
@@ -24,8 +20,7 @@ define([
         },
         
         events: {
-            "click span.up": "doUpvote",
-            "click span.downvote": "doDownvote"
+            "click a.up": "doUpvote"
         },
 
         changeClass: function(name) {
@@ -37,25 +32,30 @@ define([
         },
 
         doUpvote: function() {
+            var self = this;
             if (!this.model.id) {
-                this.model.save({
+                this.model.save(null, {
                     success: function() {
-                        this.changeClass("upvote");
+                        self.changeClass("upvote");
+                        self.model.trigger("reload");
+                    },
+                    error: function() {
+                        console.error("Error upvoting!");
                     }
                 });
 
             } else {
-                var self = this;
                 this.model.destroy({
                     success: function() {
                         self.model.unset("id"); // Get rid of the ID, so next click is http POST
                         self.changeClass("");   // Style normally
+                        self.model.trigger("reload");
+                    },
+                    error: function() {
+                        console.error("Erro upvoting!");
                     }
                 });
             }
-        },
-        doDownvote: function() {
-            
         }
     });
 

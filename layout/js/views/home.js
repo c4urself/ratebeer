@@ -13,7 +13,6 @@ define([
     var MainView = Backbone.View.extend({
         el: $('#container'),
         current: -1,
-
         buttons: $('ul.navigation', this.el),
         collection: new BeerCollection(),
 

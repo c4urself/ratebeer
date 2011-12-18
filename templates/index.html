@@ -1,17 +1,12 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<title>Rate Beer</title>
-		<link href="{{ STATIC_URL }}css/style.css" type="text/css" rel="stylesheet" />
-		<script data-main="{{ STATIC_URL}}js/main" src="{{ STATIC_URL }}js/libs/require.js"></script>
-	</head>
+    <head>
+        <title>Rate Beer</title>
+        <link href="{{ STATIC_URL }}css/style.css" type="text/css" rel="stylesheet" />
+        <script data-main="{{ STATIC_URL}}js/main" src="{{ STATIC_URL }}js/libs/require.js"></script>
+    </head>
     <body>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("html
-            });
-        </script>
-		<div id="container">
+        <div id="container">
         {% block content %}
             <ul id="beers"></ul>
             <div id="number"></div>
@@ -19,7 +14,7 @@
         {% endblock %}
         {% if user.is_authenticated %}<div class="small logout"><a href="/logout/">logout</a></div>{% endif %}
         </div>
-	</body>
+    </body>
 </html>
 
 

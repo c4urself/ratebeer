@@ -14,6 +14,7 @@ body {
     color: #444444;
 }
 ul#beers {
+    list-style: none;
     margin-top: 10px;
 }
 ul.navigation {
@@ -34,6 +35,7 @@ ul.navigation li {
     display: block;
     margin-top: 5px;
     color: #a0a0a0;
+    text-decoration: none;
 }
 .vote {
     width: 45px;
@@ -43,11 +45,11 @@ ul.navigation li {
     cursor: pointer;
 }
 .up {
-    height: 14px;
+    height: 20px;
     display: block;
-    background: transparent url(../img/vote_sprite.png) 0px -40px no-repeat;
+    background: transparent url(../img/vote_sprite.png) 0px -34px no-repeat;
 }
-.vote span.upvoted {
+.vote a.upvoted {
     height: 20px;
     background-position: 0px 0px;
 }
@@ -64,7 +66,7 @@ input {
     display: block;
     background: transparent url(../img/vote_sprite.png) 0px -75px no-repeat;
 }
-.vote span.downvoted {
+.vote a.downvoted {
     background-position: 0px -100px;
 }
 

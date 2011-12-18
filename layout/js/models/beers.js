@@ -10,13 +10,7 @@ define([
             return beer.get("id");
         },
 
-        initialize: function() {
-            console.info("Initialized beers collection");
-            console.info(this.models);
-        },
-
         parse: function(response) {
-            console.warn(response.objects);
             return response.objects;
         }
     });
